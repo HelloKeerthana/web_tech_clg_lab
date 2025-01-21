@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tables</title>
+    <style>
+      table{
+        padding: 20px 20px;
+        margin-bottom: 30px;
+        border-collapse: collapse;
+        width: 50%;
+        height: 20%;
+      }
+      th{
+        background-color: lavender;
+      }
+      table,th,td{
+        border: 2px solid blue;
+        padding: 5px 5px;
+      }
+      #headd{
+        font-weight: bolder;
+        color: blue;
+      }
+      #headd2{
+        font-weight: bold;
+        color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+      <h3> CSE-210---Web Technologies - 2 </h3>
+
+      <a href="#1" target="_self"><p>go to table 1 </p></a>
+      <a href="#2" target="_self"><p>go to table 2 </p></a>
+      <a href="#3" target="_self"><p>go to table 3 </p></a>
+      <a href="#4" target="_self"><p>go to table 4 </p></a>
+      <a href="#5" target="_self"><p>go to table 5 </p></a>
+      <a href="#6" target="_self"><p>go to table 6 </p></a>
+
+      <table id="1">
+        <tr>
+          <th>DAY</th>
+          <th>subject</th>
+          <th>start</th>
+          <th>end</th>
+          <th>roomNo</th>
+        </tr>
+        <tr>
+        <td rowspan=2>
+          monday
+        </td>
+        <td>maths</td>
+        <td>9am</td>
+        <td>10am</td>
+        <td>101</td>
+        </tr>
+        <tr>
+          <td colspan = 2>physics</td>
+          <td>11:15</td>
+          <td>102</td>
+        </tr>
+        <tr>
+        <td rowspan=2>
+          tuesday
+        </td>
+        <td>chem</td>
+        <td>9am</td>
+        <td>10am</td>
+        <td>103</td>
+        </tr>
+        <tr>
+          <td colspan = 4>labb</td>
+        </tr>
+      </table>
+      <table  id="2">
+        <tr id="headd">
+          <th>hours</th>
+          <th>1</th>
+          <th>2</th>
+          <th></th>
+          <th>3</th>
+          <th>4</th>
+          <th></th>
+          <th>5</th>
+          <th>6</th>
+        </tr>
+        <tr id="headd2">
+          <td>time</td>
+          <td>8 to 830</td>
+          <td>830 to 9</td>
+          <td>9 to 930</td>
+          <td>930 to 1030</td>
+          <td>1030 to 12</td>
+          <td>12 to 1</td>
+          <td>1 to 2</td>
+          <td>3 to 4</td>
+        </tr>
+        <tr>
+          <td>monday</td>
+          <td colspan=2>lab</td>
+          <td rowspan=5>BREAK</td>
+          <td>s1</td>
+          <td>s3</td>
+          <td rowspan=5>lunch BREAK</td>
+          <td>s3</td>
+          <td>s4</td>
+        </tr>
+        <tr>
+          <td>tuesday</td>
+          <td>s4</td>
+          <td>s3</td>
+          <td>s2</td>
+          <td>s1</td>
+          <td colspan=2>lab</td>
+        </tr>
+        <tr>
+          <td>wednesday</td>
+          <td colspan=2>lab</td>
+          <td>s3</td>
+          <td>s2</td>
+          <td>s1</td>
+          <td>s4</td>
+        </tr>
+        <tr>
+          <td>thursday</td>
+          <td colspan=2>sports</td>
+          <td>s4</td>
+          <td>s1</td>
+          <td>s2</td>
+          <td>s3</td>
+        </tr>
+        <tr>
+          <td>friday</td>
+          <td>s4</td>
+          <td>s3</td>
+          <td>s2</td>
+          <td>s1</td>
+          <td colspan=2>clubs</td>
+        </tr>
+      </table>
+      <table  id="3">
+        <tr>
+          <th width=50px>name</th>
+          <th width=120px>eqn</th>
+          <th width=200px>desc</th>
+        </tr>
+        <tr>
+          <td>pythagorean theorm</td>
+          <td>a<sup>2</sup> + b<sup>2</sup> = c <sup>2</sup></td>
+          <td> the Pythagorean theorem or Pythagoras' theorem is a fundamental relation in Euclidean geometry between the three sides of a right triangle.</td>
+        </tr>
+        <tr>
+          <td>quadratic formula</td>
+          <td>x = (-b &plusmn; <msqrt> (b<sup>2</sup> - 4ac)</msqrt>/2a</td>
+          <td>the quadratic formula is a closed-form expression describing the solutions of a quadratic equation. </td>
+        </tr>
+         <tr>
+          <td>newtons second law</td>
+          <td>F = ma</td>
+          <td>Newton's second law of motion states that the net force acting on an object is equal to the object's mass multiplied by its acceleration</td>
+        </tr>
+         <tr>
+          <td>area of a circle</td>
+          <td>A=&pi;r<sup>2</sup></td>
+          <td>Area of a circle can be calculated by using the formulas: Area = π × r2, where 'r' is the radius.</td>
+        </tr>
+        <tr>
+          <td>einsteins mass - energy relation</td>
+          <td>E=mc<sup>2</sup></td>
+          <td>The formula defines the energy E of a particle in its rest frame as the product of mass (m) with the speed of light squared (c2).</td>
+        </tr>
+      </table>
+      <table  id="4">
+        <tr>
+          <th>DAY</th>
+          <th>subject</th>
+          <th>start</th>
+          <th>end</th>
+          <th>roomNo</th>
+        </tr>
+        <tr>
+        <td rowspan=2>
+          monday
+        </td>
+        <td>maths</td>
+        <td>9am</td>
+        <td>10am</td>
+        <td>101</td>
+        </tr>
+        <tr>
+          <td colspan = 2>physics</td>
+          <td>11:15</td>
+          <td>102</td>
+        </tr>
+        <tr>
+        <td rowspan=2>
+          tuesday
+        </td>
+        <td>chem</td>
+        <td>9am</td>
+        <td>10am</td>
+        <td>103</td>
+        </tr>
+        <tr>
+          <td colspan = 4>labb</td>
+        </tr>
+      </table>
+      <table  id="5">
+        <tr id="headd">
+          <th>hours</th>
+          <th>1</th>
+          <th>2</th>
+          <th></th>
+          <th>3</th>
+          <th>4</th>
+          <th></th>
+          <th>5</th>
+          <th>6</th>
+        </tr>
+        <tr id="headd2">
+          <td>time</td>
+          <td>8 to 830</td>
+          <td>830 to 9</td>
+          <td>9 to 930</td>
+          <td>930 to 1030</td>
+          <td>1030 to 12</td>
+          <td>12 to 1</td>
+          <td>1 to 2</td>
+          <td>3 to 4</td>
+        </tr>
+        <tr>
+          <td>monday</td>
+          <td colspan=2>lab</td>
+          <td rowspan=5>BREAK</td>
+          <td>s1</td>
+          <td>s3</td>
+          <td rowspan=5>lunch BREAK</td>
+          <td>s3</td>
+          <td>s4</td>
+        </tr>
+        <tr>
+          <td>tuesday</td>
+          <td>s4</td>
+          <td>s3</td>
+          <td>s2</td>
+          <td>s1</td>
+          <td colspan=2>lab</td>
+        </tr>
+        <tr>
+          <td>wednesday</td>
+          <td colspan=2>lab</td>
+          <td>s3</td>
+          <td>s2</td>
+          <td>s1</td>
+          <td>s4</td>
+        </tr>
+        <tr>
+          <td>thursday</td>
+          <td colspan=2>sports</td>
+          <td>s4</td>
+          <td>s1</td>
+          <td>s2</td>
+          <td>s3</td>
+        </tr>
+        <tr>
+          <td>friday</td>
+          <td>s4</td>
+          <td>s3</td>
+          <td>s2</td>
+          <td>s1</td>
+          <td colspan=2>clubs</td>
+        </tr>
+      </table>
+      <table  id="6">
+        <tr>
+          <th width=50px>name</th>
+          <th width=120px>eqn</th>
+          <th width=200px>desc</th>
+        </tr>
+        <tr>
+          <td>pythagorean theorm</td>
+          <td>a<sup>2</sup> + b<sup>2</sup> = c <sup>2</sup></td>
+          <td> the Pythagorean theorem or Pythagoras' theorem is a fundamental relation in Euclidean geometry between the three sides of a right triangle.</td>
+        </tr>
+        <tr>
+          <td>quadratic formula</td>
+          <td>x = (-b &plusmn; <msqrt> (b<sup>2</sup> - 4ac)</msqrt>/2a</td>
+          <td>the quadratic formula is a closed-form expression describing the solutions of a quadratic equation. </td>
+        </tr>
+         <tr>
+          <td>newtons second law</td>
+          <td>F = ma</td>
+          <td>Newton's second law of motion states that the net force acting on an object is equal to the object's mass multiplied by its acceleration</td>
+        </tr>
+         <tr>
+          <td>area of a circle</td>
+          <td>A=&pi;r<sup>2</sup></td>
+          <td>Area of a circle can be calculated by using the formulas: Area = π × r2, where 'r' is the radius.</td>
+        </tr>
+        <tr>
+          <td>einsteins mass - energy relation</td>
+          <td>E=mc<sup>2</sup></td>
+          <td>The formula defines the energy E of a particle in its rest frame as the product of mass (m) with the speed of light squared (c2).</td>
+        </tr>
+        
+      </table>
+  </body>
+</html>
