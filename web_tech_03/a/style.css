@@ -1,0 +1,68 @@
+.home_links, .second{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 , 10px;
+}
+h1{
+    font-size: 1.9em;
+    color: white;
+    background-color: rgb(55, 109, 184);
+    padding: 20px 20px;
+    text-align: center;
+}
+h2{
+    font-size: 1.9em;
+    color: white;
+    background-color: rgb(55, 109, 184);
+    padding: 0px 10px;
+    text-align: center;
+}
+p{
+    font-size: 1.2em;
+    color: rgb(77, 61, 61);
+    padding: 2px 2px;
+}
+img{
+    border-radius: 50%;
+}
+.home_links{
+    font-weight: light;
+    font-size: medium;
+    height: 80vh;
+    border: 0.5px solid black;
+    width: 23%;
+    line-height: 1.6;
+    padding-bottom: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+li{
+    font-size: 1em;
+}
+.second_head{
+    color: rgb(66, 59, 59);
+    font-size: larger;
+    font-weight: 500;
+    background-color: yellow;
+    border-radius: 5px 5px 0px 0px;
+    padding: 10px 10px;
+    width: 74%;
+}
+.pro{
+    background-color: rgb(228, 244, 239);
+    align-items: center;
+    margin: 20px 20px;
+    border: 2px dashed blue;
+    width: max-content;
+}
+.contact{
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin: 20px 20px;
+    border: 2px solid blue;
+    width: 70%; 
+
+}
+footer{
+    margin-top: 100px;
+}

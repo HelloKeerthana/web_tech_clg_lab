@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 70px 70px;
+    padding: 0;
+    display: flex;
+}
+
+.main {
+    width: 20%;
+    height: 80vh;
+    border-right: 1px solid black;
+    background-color: rgb(230, 226, 226);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.main h1 {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.main table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.main th {
+    color: beige;
+    background-color: rgb(73, 67, 67);
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.main td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.main a {
+    text-decoration: none;
+    color: blue;
+}
+
+.mainmain {
+    display: inline-block;
+    width: 78%; 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.city {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(230, 226, 226);
+    border: 1px solid gray;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.city h2 {
+    font-size: 1.2em;
+    margin: 0;
+    color: blue;
+}
+
+.city_right a {
+    margin-left: 15px;
+    font-size: 1em;
+    text-decoration: none;
+    color: blue;
+}
+
+.city_right a:hover {
+    text-decoration: underline;
+}
+
+.sems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+.sem {
+    max-width: 400px;
+    flex: 1 1 40%; 
+    border: 1px solid lightgray;
+    padding: 5px;
+    margin: 5px 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.sem h3 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.sem a {
+    display: block;
+    font-size: 0.9em;
+    color: #418cdd;
+    text-decoration: none;
+}
+
+.sem a:hover {
+    text-decoration: underline;
+}
+.last{
+    border: 2px solid black;
+    max-width: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(230, 226, 226);
+    border: 1px solid gray;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.sem_last{
+    display: inline;
+    align-content: center;
+    justify-content: space-between;
+    
+}
+.blah{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    gap: 10px;
+    text-decoration: none;
+}
+.sem ul {
+    padding-right: 10px;
+}
+
+.sem li {
+    margin-bottom: 5px; 
+}
