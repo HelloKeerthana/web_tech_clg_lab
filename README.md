@@ -2,5 +2,4 @@
 <br>
 <p>SEM 4 YEAR 2
 <br>
-ASSIGNMENTS AND LABS</p>
-</b>
+ASSIGNMENTS AND LABS</p></b>
