@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h2>Weather Finder</h2>
+    <input type="text" id="city" placeholder="Enter city name">
+    <select id="language">
+        <option value="en">English</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="es">Spanish</option>
+        <option value="ru">Russian</option>
+    </select>
+    <button id="getWeather" onclick="getWeather()">Get Weather</button>
+    <p id="output"></p>
+    <iframe id="map" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+    <script>
+        function getWeather() {
+            let city = document.getElementById("city").value.trim();
+            let lang = document.getElementById("language").value;
+            
+            if (!city) {
+                alert("Please enter a city name.");
+                return;
+            }
+            
+            let xhr = new XMLHttpRequest();
+            let url = `https://wttr.in/${city}?format=j1&lang=${lang}`;
+            
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    let weather = data.current_condition[0];
+                    //write your code....... 
+                    console.log(weather)
+                    document.getElementById('output').innerHTML = 
+                                         `<b>temp : </b>${weather.temp_C} C<br> 
+                                          <b>description : </b>${weather.weatherDesc[0].value} <br>
+                                          <b>windSpeed : </b>${weather.windspeedKmph}` 
+
+                    const latitude = weather.nearest_area[0].latitude;   
+                    const longitude = weather.nearest_area[0].longitude;
+                                          
+                    console.log(latitude);
+                    console.log(longitude);
+
+                    showMap(latitude, longitude);
+                } else if (xhr.readyState === 4) {
+                    document.getElementById("output").innerText = "Error fetching weather data.";
+                }
+            };
+            xhr.send();
+        }
+
+        function showMap(lat, lon) {
+            let mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.05},${lat-0.05},${lon+0.05},${lat+0.05}&layer=mapnik&marker=${lat},${lon}`;
+            document.getElementById("map").src = mapUrl;
+        }
+    </script>
+</body>
+</html>

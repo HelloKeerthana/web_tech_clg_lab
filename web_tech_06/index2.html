@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <span id="nameError" class="error"></span>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" placeholder="Enter your age">
+        <span id="ageError" class="error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <span id="emailError" class="error"></span>
+
+        <label for="pin">PIN Code:</label>
+        <input type="text" id="pin" name="pin" placeholder="Enter 6-digit PIN">
+        <span id="pinError" class="error"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter a strong password">
+        <span id="passwordError" class="error"></span>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Name validation
+            const name = document.getElementById("name").value.trim();
+            const nameError = document.getElementById("nameError");
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(name)) {
+                nameError.textContent = "Name must contain only alphabets and spaces.";
+                isValid = false;
+            } else {
+                nameError.textContent = "";
+            }
+
+            // Age validation
+            const age = document.getElementById("age").value.trim();
+            const ageError = document.getElementById("ageError");
+            const ageNumber = parseInt(age);
+            if (!Number.isInteger(ageNumber) || ageNumber < 18 || ageNumber > 60) {
+                ageError.textContent = "Age must be an integer between 18 and 60.";
+                isValid = false;
+            } else {
+                ageError.textContent = "";
+            }
+
+            // Email validation
+            const email = document.getElementById("email").value.trim();
+            const emailError = document.getElementById("emailError");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                isValid = false;
+            } else {
+                emailError.textContent = "";
+            }
+
+            // PIN code validation
+            const pin = document.getElementById("pin").value.trim();
+            const pinError = document.getElementById("pinError");
+            const pinRegex = /^\d{6}$/;
+            if (!pinRegex.test(pin)) {
+                pinError.textContent = "PIN code must contain exactly 6 digits.";
+                isValid = false;
+            } else {
+                pinError.textContent = "";
+            }
+
+            // Password validation
+            const password = document.getElementById("password").value.trim();
+            const passwordError = document.getElementById("passwordError");
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long, contain one uppercase letter, one lowercase letter, one digit, and one special character.";
+                isValid = false;
+            } else {
+                passwordError.textContent = "";
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

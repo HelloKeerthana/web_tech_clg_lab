@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h2>Weather Finder</h2>
+    <input type="text" id="city" placeholder="Enter city name">
+    <button id="getWeather" onclick="getWeather()">Get Weather</button>
+    <button id="getLocationWeather" onclick="getLocationWeather()">Get Current Location Weather</button>
+    <p id="output"></p>
+
+    <script>
+        function getWeather() {
+            let city = document.getElementById("city").value.trim();
+            if (!city) {
+                alert("Please enter a city name.");
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+            let url = `https://wttr.in/${city}?format=j1`;
+
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText);
+                        let weather = data.current_condition[0];
+                        document.getElementById("output").innerHTML = 
+                            `<b>Temperature:</b> ${weather.temp_C}&deg;C <br>
+                             <b>Condition:</b> ${weather.weatherDesc[0].value} <br>
+                             <b>Wind Speed:</b> ${weather.windspeedKmph} km/h`;
+                    } else {
+                        document.getElementById("output").innerText = "Error fetching weather data.";
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        function getLocationWeather() {
+            if (!navigator.geolocation) {
+                alert("Geolocation is not supported by your browser.");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error);
+
+            function success(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                let xhr = new XMLHttpRequest();
+                let url = `https://wttr.in/${latitude},${longitude}?format=j1`;
+
+                xhr.open("GET", url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            let data = JSON.parse(xhr.responseText);
+                            let weather = data.current_condition[0];
+                            document.getElementById("output").innerHTML = 
+                                `<b>Temperature:</b> ${weather.temp_C}&deg;C <br>
+                                 <b>Condition:</b> ${weather.weatherDesc[0].value} <br>
+                                 <b>Wind Speed:</b> ${weather.windspeedKmph} km/h`;
+                        } else {
+                            document.getElementById("output").innerText = "Error fetching weather data.";
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            function error() {
+                alert("Unable to retrieve your location.");
+            }
+        }
+    </script>
+</body>
+</html>
