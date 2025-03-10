@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        .dark-mode .card, .dark-mode .table, .dark-mode .form-control {
+            background-color: #222;
+            color: white;
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Currency Converter</h2>
+        <button id="toggleMode" class="btn btn-secondary mb-3">Toggle Dark Mode</button>
+        
+        <!-- Currency Converter Form -->
+        <div class="card p-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Amount</label>
+                    <input type="number" id="amount" class="form-control" value="1">
+                </div>
+                <div class="col-md-4">
+                    <label>From</label>
+                    <select id="fromCurrency" class="form-select"></select>
+                </div>
+                <div class="col-md-4">
+                    <label>To</label>
+                    <select id="toCurrency" class="form-select"></select>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="convertCurrency()">Convert</button>
+            <h4 class="mt-3" id="result"></h4>
+        </div>
+
+        <!-- Historical Exchange Rate Table -->
+        <h3 class="mt-4">Historical Exchange Rates</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Start Date</label>
+                <input type="date" id="startDate" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label>End Date</label>
+                <input type="date" id="endDate" class="form-control">
+            </div>
+        </div>
+        <button class="btn btn-info mt-3" onclick="fetchHistoricalData()">Get Rates</button>
+        <table class="table mt-3">
+            <thead>
+                <tr><th>Date</th><th>Rate</th></tr>
+            </thead>
+            <tbody id="historyTable"></tbody>
+        </table>
+
+        <!-- Chart -->
+        <h3 class="mt-4">Exchange Rate Trends</h3>
+        <canvas id="rateChart"></canvas>
+    </div>
+
+    <script>
+        const apiUrl = "https://api.frankfurter.app";
+        
+        document.getElementById("toggleMode").addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+        
+        async function fetchCurrencies() {
+            const res = await fetch(`${apiUrl}/currencies`);
+            const data = await res.json();
+            const currencyOptions = Object.keys(data).map(curr => `<option value="${curr}">${curr}</option>`).join('');
+            document.getElementById("fromCurrency").innerHTML = currencyOptions;
+            document.getElementById("toCurrency").innerHTML = currencyOptions;
+        }
+        
+        async function convertCurrency() {
+            const amount = document.getElementById("amount").value;
+            const from = document.getElementById("fromCurrency").value;
+            const to = document.getElementById("toCurrency").value;
+            const res = await fetch(`${apiUrl}/latest?amount=${amount}&from=${from}&to=${to}`);
+            const data = await res.json();
+            document.getElementById("result").innerText = `${amount} ${from} = ${data.rates[to]} ${to}`;
+        }
+        
+        async function fetchHistoricalData() {
+            const from = document.getElementById("fromCurrency").value;
+            const to = document.getElementById("toCurrency").value;
+            const start = document.getElementById("startDate").value;
+            const end = document.getElementById("endDate").value;
+            const res = await fetch(`${apiUrl}/${start}..${end}?from=${from}&to=${to}`);
+            const data = await res.json();
+            let tableHTML = "";
+            let labels = [], values = [];
+            for (let date in data.rates) {
+                tableHTML += `<tr><td>${date}</td><td>${data.rates[date][to]}</td></tr>`;
+                labels.push(date);
+                values.push(data.rates[date][to]);
+            }
+            document.getElementById("historyTable").innerHTML = tableHTML;
+            renderChart(labels, values);
+        }
+        
+        function renderChart(labels, values) {
+            const ctx = document.getElementById("rateChart").getContext("2d");
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{ label: "Exchange Rate", data: values, backgroundColor: "blue" }]
+                }
+            });
+        }
+        
+        fetchCurrencies();
+    </script>
+</body>
+</html>
